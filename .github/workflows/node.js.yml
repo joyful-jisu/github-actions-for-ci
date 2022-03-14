@@ -33,8 +33,12 @@ jobs:
     - name: npm install and build webpack
       run: |
         npm install
+        npm run build
+  
+  artifact:
     needs: build
-        
+    runs-on: ubuntu-latest
+    steps:
     - uses: actions/upload-artifact@main
       with:
         name: webpack artifacts
@@ -54,6 +58,7 @@ jobs:
     - name: npm install, and test
       run: |
         npm install
-      npm test
+        npm test
     env:
       CI: true
+    
